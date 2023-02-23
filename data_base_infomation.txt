@@ -1,0 +1,48 @@
+﻿student:
+* student_id: primary key, identificador do estudante;
+* student_name: armazena o nome do estudante;
+* student_mail: armazena o e-mail do estudante;
+* student_pwd: armazena a senha para login do estudante.
+
+
+teacher:
+* teacher_id: primary key, identificador do professor;
+* teacher_name: armazena o nome do professor;
+* teacher_mail: armazena o e-mail do professor;
+* teacher_pwd: armazena a senha para login do professor;
+
+
+study_docs:
+* sdoc_id: primary key, identificador  do material de estudo;
+* teacher_id: foreign key, identificador do professor o qual cadastrou o material;
+* certifier_id: default "awating". Recebe a foreign key certifier_id quando o documento estiver em tratamento pelo certificador;
+* sdoc_title: nome do documento, arquivo;
+* sdoc_description: uma breve descrição do arquivo;
+* study_doc: armazena o arquivo de estudo;
+* sdoc_status: armazena o status do processo de certificação do material. Ex: Aprovado, reprovado, em tratamento e aguardando;
+
+
+certifier:
+* certifier_id: primary key, identificador do certificador;
+* certifier_name: nome do certificador;
+* certifier_mail: e-mail do certificador;
+* certifier_pwd: senha de acesso do certificador;
+
+
+questions:
+* question_id: primary key,identificador da questão;
+* teacher_id: foreign key, identificador do professor que cadastrou a questão;
+* certifier_id: default “awaiting”. recebe a foreign key certifier_id quando a questão estiver em tratamento pelo certificador;
+* question_field:  área da questão. ex: portugues, matemática, geografia etc...;
+* description: descrição da questão;
+* answer_a, answer_b , answer_c, correct_answer: armaze as questoes falsas e a verdadeira;
+* question_status: armazena o status do processo de certificação da questão. ex: aprovado, reprovado, em tratamento e aguardando;
+* question_relevance: armazena a média da avaliação da questão.
+
+
+exam:
+* exam_id: identificador da prova;
+* student_id: chave estrangeira,  vincula o estudante que criou a prova;
+* question_id (n):  a prova vai armazenar os n ids das questões, (quantas questões a prova vai ter?);
+* exam_private: o aluno poderá definir se só ele poderá visualizar a prova ou se ficará disponível para todos os usuários do app;
+* exam_relavance: armazena a média da avaliação da questão.
